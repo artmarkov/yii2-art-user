@@ -1,0 +1,26 @@
+{
+  "name": "artsoft/yii2-art-user",
+  "description": "User Module For Art CMS",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Taras Makitra",
+      "email": "makitrataras@gmail.com"
+    },
+    {
+      "name": "Artur Markov",
+      "email": "artmarkov@mail.ru"
+    }
+  ],
+  "require": {
+    "artsoft/yii2-art-core": "dev-master",
+    "artsoft/yii2-art-auth": "dev-master",
+    "webvimark/date-range-picker": "~1.0.2",
+    "ikimea/browser": "~1.14"
+  },
+  "autoload": {
+    "psr-4": {
+      "artsoft\\user\\": ""
+    }
+  }
+}
