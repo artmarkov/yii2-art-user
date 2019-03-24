@@ -39,11 +39,14 @@ use artsoft\helpers\ArtHelper;
                     <?php endif; ?>
                     
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <?= $form->field($model, 'last_name')->textInput(['maxlength' => 124]) ?>
+                        </div>
+                        <div class="col-md-4">
                             <?= $form->field($model, 'first_name')->textInput(['maxlength' => 124]) ?>
                         </div>
-                        <div class="col-md-6">
-                            <?= $form->field($model, 'last_name')->textInput(['maxlength' => 124]) ?>
+                        <div class="col-md-4">
+                            <?= $form->field($model, 'middle_name')->textInput(['maxlength' => 124]) ?>
                         </div>
                     </div>
 
