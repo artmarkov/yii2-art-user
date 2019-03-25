@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <strong>
-                        <span class="glyphicon glyphicon-th"></span><?= Yii::t('art/user', 'Routes') ?>
+                        <span class="glyphicon glyphicon-th"></span> <?= Yii::t('art/user', 'Routes') ?>
                     </strong>
                 </div>
 
@@ -90,14 +90,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                    placeholder="<?= Yii::t('art/user', 'Search route') ?>">
                         </div>
 
-                        <!--div class="col-sm-3 text-right">
+<!--                        <div class="col-sm-3 text-right">
                             <span id="show-only-selected-routes" class="btn btn-default btn-sm">
 				<i class="fa fa-minus"></i> <?= Yii::t('art/user', 'Show only selected') ?>
                             </span>
                             <span id="show-all-routes" class="btn btn-default btn-sm hide">
 				<i class="fa fa-plus"></i> <?= Yii::t('art/user', 'Show all') ?>
                             </span>
-                        </div-->
+                        </div>-->
                     </div>
 
                     <hr/>
