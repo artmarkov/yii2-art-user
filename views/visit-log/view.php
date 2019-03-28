@@ -1,6 +1,7 @@
 <?php
 
 use yii\widgets\DetailView;
+use artsoft\helpers\Html;
 
 /**
  * @var yii\web\View $this
@@ -16,7 +17,19 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="user-visit-log-view">
 
     <h3 class="lte-hide-title"><?= $this->title ?></h3>
-
+ <?php if (Yii::$app->user->isSuperadmin): ?>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <?= Html::a(Yii::t('art', 'Delete'), ['/user/visit-log/delete', 'id' => $model->id], [
+                'class' => 'btn btn-sm btn-default',
+                'data' => [
+                    'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                    'method' => 'post',
+                ],
+            ]) ?>
+        </div>
+ <?php endif; ?>
+    </div>
     <div class="panel panel-default">
         <div class="panel-body">
 

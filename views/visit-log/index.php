@@ -4,6 +4,7 @@ use webvimark\extensions\DateRangePicker\DateRangePicker;
 use artsoft\grid\GridPageSize;
 use artsoft\grid\GridView;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Pjax;
 
 /**
@@ -45,8 +46,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'id' => 'user-visit-log-grid',
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
-                    'bulkActions' => ' ',
+                    'bulkActionOptions' => [
+                    'gridId' => 'user-visit-log-grid',
+                        'actions' => [                        
+                             Url::to(['bulk-delete']) => Yii::t('yii', 'Delete'),
+                        ],                            
+                    ],
                     'columns' => [
+                        ['class' => 'artsoft\grid\CheckboxColumn', 'options' => ['style' => 'width:10px']],
                         [
                             'attribute' => 'user_id',
                             'class' => 'artsoft\grid\columns\TitleActionColumn',
@@ -55,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return Html::a(@$model->user->username,
                                     ['view', 'id' => $model->id], ['data-pjax' => 0]);
                             },
-                            'buttonsTemplate' => ''
+                             'buttonsTemplate' => '{view} {delete}',
                         ],
                         'language',
                         'os',
@@ -71,43 +78,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         ),
                         [
                             'attribute' => 'visit_time',
+                            'options' => [ 'autocomplete' => 'off'],
                             'value' => function ($model) {
                                 return $model->visitDatetime;
                             },
-                        ],
-                        [
-                            'class' => 'yii\grid\ActionColumn',
-                            'template' => '{view}',
-                            'contentOptions' => ['style' => 'width:70px; text-align:center;'],
-                        ],
-                        /* [
-                          'attribute' => 'author_id',
-                          'filter' => artsoft\models\User::getUsersList(),
-                          'value' => function(Post $model) {
-                          return Html::a($model->author->username,
-                          ['user/view', 'id' => $model->author_id],
-                          ['data-pjax' => 0]);
-                          },
-                          'format' => 'raw',
-                          'options' => ['style' => 'width:180px'],
-                          ],
-                          [
-                          'class' => 'artsoft\grid\columns\StatusColumn',
-                          'attribute' => 'status',
-                          'optionsArray' => Post::getStatusOptionsList(),
-                          'options' => ['style' => 'width:60px'],
-                          ],
-                          [
-                          'class' => 'artsoft\grid\columns\DateFilterColumn',
-                          'attribute' => 'published_at',
-                          'value' => function(Post $model) {
-                          return '<span style="font-size:85%;" class="label label-'
-                          .((time() >= $model->published_at) ? 'primary' : 'default').'">'
-                          .$model->publishedDate.'</span>';
-                          },
-                          'format' => 'raw',
-                          'options' => ['style' => 'width:150px'],
-                          ], */
+                        ],                        
                     ],
                 ]);
                 ?>

@@ -25,6 +25,7 @@ class VisitLogController extends BaseController
      *
      * @inheritdoc
      */
-    public $enableOnlyActions = ['index', 'view', 'grid-page-size'];
+  
+    public $disabledActions = ['update'];
 
 }
