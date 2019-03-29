@@ -1,6 +1,6 @@
 <?php
 
-use webvimark\extensions\DateRangePicker\DateRangePicker;
+use artsoft\widgets\DateRangePicker;
 use artsoft\grid\GridPageSize;
 use artsoft\grid\GridView;
 use yii\helpers\Html;
@@ -96,5 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
 DateRangePicker::widget([
     'model' => $searchModel,
     'attribute' => 'visit_time',
+    'format' => 'DD.MM.YYYY H:mm',
+    'opens' => 'left',
 ])
 ?>

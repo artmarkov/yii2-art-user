@@ -15,7 +15,6 @@
   "require": {
     "artsoft/yii2-art-core": "dev-master",
     "artsoft/yii2-art-auth": "dev-master",
-    "webvimark/date-range-picker": "~1.0.2",
     "ikimea/browser": "~1.14"
   },
   "autoload": {
