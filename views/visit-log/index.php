@@ -78,10 +78,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         ),
                         [
                             'attribute' => 'visit_time',
-                            'options' => [ 'autocomplete' => 'off'],
+                            'filterInputOptions' => ['class' => 'form-control', 'id' => null, 'autocomplete' => 'off'],
                             'value' => function ($model) {
                                 return $model->visitDatetime;
                             },
+                            'options' => ['style' => 'width:270px'],
                         ],                        
                     ],
                 ]);
