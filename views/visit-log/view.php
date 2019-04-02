@@ -42,7 +42,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute' => 'visit_time',
-                        'value' => $model->visitDatetime,
+                        'value' => $model->visitDatetime 
+                            . ' ' . $model->geoLocation['city']['name_en'] 
+                            . ' ' . $model->geoLocation['country']['name_en'],
                     ],
                     'ip',
                     'language',
@@ -51,7 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     'user_agent',
                 ],
             ]) ?>
-
         </div>
     </div>
 </div>

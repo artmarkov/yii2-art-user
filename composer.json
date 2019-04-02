@@ -14,8 +14,7 @@
   ],
   "require": {
     "artsoft/yii2-art-core": "dev-master",
-    "artsoft/yii2-art-auth": "dev-master",
-    "ikimea/browser": "~1.14"
+    "artsoft/yii2-art-auth": "dev-master"
   },
   "autoload": {
     "psr-4": {
