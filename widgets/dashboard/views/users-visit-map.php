@@ -38,41 +38,20 @@ use cjtterabytesoft\widget\jvectormap\JvectorMap;
                 /** [map config] **/
                 'map' => 'world_mill',
                 'backgroundColor' => '#fefefe',
-                'focusOn' => [
-                    'LT',
-                    'LV', 
-                    'EE', 
-                    'BY', 
-                    'UA', 
-                    'RU', 
-                ],
-                'markers' => [
-                    [
-                        'latLng' => [21.00,78.00],
-                        'name' => 'IND : 350'
-                    ],
-                    [
-                        'latLng' => [-33.00,151.00],
-                        'name' => 'AUS : 250'
-                    ],
-                    [
-                        'latLng' => [36.77,-119.41],
-                        'name' => 'USA : 250'
-                    ],
-                    [
-                        'latLng' => [55.37,-3.41],
-                        'name' => 'UK : 250'
-                    ],
-                    [
-                        'latLng' => [25.20,55.27],
-                        'name' => 'UAE : 250'
-                    ],
-                ],
+//                'focusOn' => [
+//                    'LT',
+//                    'LV', 
+//                    'EE', 
+//                    'BY', 
+//                    'UA', 
+//                    'RU', 
+//                ],
+                'markers' => $markers,
                 'markersSelectable' => true,
                 'markersSelectableOne' => true,
                 'markerStyle' => [
                     'initial' => [
-                        'r' => 7,
+                        'r' => 4,
                         'fill' => '#fff',
                         'fill-opacity' => 1,
                         'stroke' => '#000',
@@ -104,14 +83,7 @@ use cjtterabytesoft\widget\jvectormap\JvectorMap;
                 ],
                 'series' => [
                     'regions' => [[
-                        'values' => [
-                            'LT' => 100,
-                            'LV' => 100,
-                            'EE' => 100,
-                            'BY' => 100,
-                            'UA' => 100,
-                            'RU' => 500,
-                        ],
+                        'values' => $values,
                         'scale' => ['#81A5B3', '#4D7686'],
                         'normalizeFunction' => 'polynomial',
                     ]],
