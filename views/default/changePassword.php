@@ -7,7 +7,7 @@ use yii\helpers\Html;
  * @var yii\web\View $this
  * @var artsoft\models\User $model
  */
-$this->title = Yii::t('art/user', 'Update User Password');
+$this->title = Yii::t('art/user', 'Update Password for "{user}"', ['user' => $model->username]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('art/user', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 

@@ -14,7 +14,10 @@
   ],
   "require": {
     "artsoft/yii2-art-core": "dev-master",
-    "artsoft/yii2-art-auth": "dev-master"
+    "artsoft/yii2-art-auth": "dev-master",
+    "ikimea/browser": "~1.14",
+    "jisoft/yii2-sypexgeo": "*",
+    "cjtterabytesoft/yii2-jvectormap": "*"
   },
   "autoload": {
     "psr-4": {

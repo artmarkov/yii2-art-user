@@ -38,7 +38,7 @@ class m151121_235512_i18n_art_user_source extends SourceMessagesMigration
             'Update Permission Group' => 1,
             'Update Permission' => 1,
             'Update Role' => 1,
-            'Update User Password' => 1,
+            'Update Password for "{user}"' => 1,
             'Update User' => 1,
             'User not found' => 1,
             'User' => 1,
