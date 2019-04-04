@@ -16,21 +16,13 @@ use dosamigos\chartjs\ChartJs;
                 'fontColor' => "#425062",
             ]
         ],
-    ],    
-    'data' => [
-        'labels' => ["Chrome", "IE", "FireFox", "Safari", "Opera", "Others"],
+    ],  
+     'data' => [
+        'labels' => $labels,
         'datasets' => [
             [
-               'backgroundColor' => [
-                'rgba(77, 117, 133, 0.2)',
-                'rgba(77, 117, 133, 0.4)',
-                'rgba(77, 117, 133, 0.6)',
-                'rgba(77, 117, 133, 0.8)',
-                'rgba(77, 117, 133, 0.9)',
-                'rgba(77, 117, 133, 1)',               
-                
-            ],
-                'data' => [65,3,23,12,50,25],           
+               'backgroundColor' => $backgroundColor,
+               'data' => $data,           
             ], 
             
         ]
