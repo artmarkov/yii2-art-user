@@ -6,7 +6,17 @@ use dosamigos\chartjs\ChartJs;
             <div class="panel-heading"><?= Yii::t('art/user', 'Users Browser') ?></div>
             <div class="panel-body">
 <?= ChartJs::widget([
-    'type' => 'doughnut',    
+    'type' => 'doughnut',
+    'clientOptions' => [
+        'legend' => [
+            'display' => true,
+            'position' => 'left',
+            'labels' => [
+                'fontSize' => 14,
+                'fontColor' => "#425062",
+            ]
+        ],
+    ],    
     'data' => [
         'labels' => ["Chrome", "IE", "FireFox", "Safari", "Opera", "Others"],
         'datasets' => [
