@@ -10,47 +10,45 @@ use Yii;
 
 class UsersVisitMap extends DashboardWidget
 { 
- /**
-     * Most recent post limit
-     */
-    public $recentLimit = 5;
-
     /**
      * Post index action
      */
     public $indexAction = 'user/default/index';
-
-    /**
-     * Total count options
-     *
-     * @var array
-     */
-    public $options;
 
     public function run()
     {
       
         if (User::hasPermission('viewUsers')) {
 
-            $users = UserVisitLog::find()->all();
+            $visits = UserVisitLog::find()->all();
            
-            foreach ($users as $user) {
-                 //echo '<pre>' . print_r($user->geoLocation, true) . '</pre>';
-                $values[] = $user->geoLocation['country']['iso'];
+            foreach ($visits as $visit) {
+//                 echo '<pre>' . print_r($visit->geoLocation, true) . '</pre>';
+                if (!empty($visit->geoLocation['country']['id']))
+                {
+                    $values[] = $visit->geoLocation['country']['iso'];
+                }
+                $sity_id = $visit->geoLocation['city']['id'];
+                if (!empty($sity_id))
+                {
+                    $markers_id[] = $sity_id;
+                    $markers_coord[$sity_id] = [
+                            $visit->geoLocation['city']['lat'],
+                            $visit->geoLocation['city']['lon']
+                        ];
+                    $markers_name[$sity_id] = empty($visit->geoLocation['city']['name_en']) ? $visit->geoLocation['country']['name_en'] : $visit->geoLocation['city']['name_en'];
+                }
+            }
+            foreach (array_count_values($markers_id) as $sity_id => $count) {
                 $markers[] = [
-                    'latLng' => [ 
-                        $user->geoLocation['city']['lat'], 
-                        $user->geoLocation['city']['lon']
-                    ],
-                    'name' => empty($user->geoLocation['city']['name_en']) ? $user->geoLocation['country']['name_en'] : $user->geoLocation['city']['name_en'], 
+                    'latLng' => $markers_coord[$sity_id],
+                    'name' => $markers_name[$sity_id] . ' - ' . $count . ' visits',
                 ];
             }
-           // echo '<pre>' . print_r($markers, true) . '</pre>';
             return $this->render('users-visit-map', [
                 'height' => $this->height,
                 'width' => $this->width,
                 'position' => $this->position,
-                'users' => $users,
                 'values' => array_count_values($values),
                 'markers' => $markers,
             ]);

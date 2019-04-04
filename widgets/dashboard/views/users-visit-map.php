@@ -4,30 +4,28 @@ use yii\helpers\Html;
 use cjtterabytesoft\widget\jvectormap\JvectorMap;
 
 /**
-* This file is part of the CJTTERABYTESOFT yii2-jvectormap
-*
-* (c) CJT TERABYTE LLC yii2-widget <https://github.com/cjtterabytesoft/yii2-jvectormap>
-* For the full copyright and license information, please view the LICENSE.md
-* file that was distributed with this source code
-*
-* @link: https://github.com/cjtterabytesoft/yii2-jvectormap
-* @author: Wilmer Arámbula <cjtterabytellc@gmail.com>
-* @copyright (c) CJT TERABYTE LLC
-* @Widget: [yii2-jvectormap]
-* @Layout [Plugin_JvectorMaps]
-* @since: 0.0.1-dev
-**/
-
+ * This file is part of the CJTTERABYTESOFT yii2-jvectormap
+ *
+ * (c) CJT TERABYTE LLC yii2-widget <https://github.com/cjtterabytesoft/yii2-jvectormap>
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code
+ *
+ * @link: https://github.com/cjtterabytesoft/yii2-jvectormap
+ * @author: Wilmer Arámbula <cjtterabytellc@gmail.com>
+ * @copyright (c) CJT TERABYTE LLC
+ * @Widget: [yii2-jvectormap]
+ * @Layout [Plugin_JvectorMaps]
+ * @since: 0.0.1-dev
+ * */
 ?>
 <div class="pull-<?= $position ?> col-xs-12 col-md-<?= $width ?> widget-height-<?= $height ?>">
-<?= Html::beginTag('div', ['class' => 'panel panel-default dw-widget']) ?>
-    <?= Html::beginTag('div', ['class' => 'panel-heading']) ?>
-            <?= Yii::t('art','Site Visits') ?>
-        <?= Html::endTag('div') ?>
-        <?= Html::beginTag('div', ['class' => 'panel-body']) ?>
-        
+    <div class = "panel panel-default dw-widget">
+        <div class = "panel-heading">
+            <?= Yii::t('art/users', 'Site Visits') ?>
+        </div>
+        <div class = "panel-body">
+
             <?= JvectorMap::widget([
-                /** [div container] **/
                 'id' => 'vmap',
                 'style' => [
                     'border' => '1px solid rgba(228, 225, 225, 0.92)',
@@ -35,17 +33,9 @@ use cjtterabytesoft\widget\jvectormap\JvectorMap;
                     'position' => 'relative',
                     'overflow' => 'hidden',
                 ],
-                /** [map config] **/
+                /** [map config] * */
                 'map' => 'world_mill',
                 'backgroundColor' => '#fefefe',
-//                'focusOn' => [
-//                    'LT',
-//                    'LV', 
-//                    'EE', 
-//                    'BY', 
-//                    'UA', 
-//                    'RU', 
-//                ],
                 'markers' => $markers,
                 'markersSelectable' => true,
                 'markersSelectableOne' => true,
@@ -74,8 +64,6 @@ use cjtterabytesoft\widget\jvectormap\JvectorMap;
                 ],
                 'regionsSelectable' => true,
                 'regionsSelectableOne' => true,
-//                'selectedMarkers' => [0,1],
-//                'selectedRegions'=> ['US','AE'],
                 'regionStyle' => [
                     'initial' => [
                         'fill' => '#CCCCCC',
@@ -83,16 +71,66 @@ use cjtterabytesoft\widget\jvectormap\JvectorMap;
                 ],
                 'series' => [
                     'regions' => [[
-                        'values' => $values,
-                        'scale' => ['#81A5B3', '#4D7686'],
-                        'normalizeFunction' => 'polynomial',
-                    ]],
+                    'values' => $values,
+                    'scale' => ['#dfe7eb', '#4D7686'],
+                    'normalizeFunction' => 'polynomial',
+                        ]],
                 ],
                 'zoomAnimate' => true,
                 'zoomMax' => 8,
                 'zoomMin' => 1,
                 'zoomOnScroll' => true,
-            ]); ?>
-        <?= Html::endTag('div') ?>
-    <?= Html::endTag('div') ?>
+            ]);
+            ?>
+        </div>
+        <div id="heat-fill">
+            <span class="fill-a">0</span>
+            <span class="fill-b"><?= max($values); ?></span>
+        </div>
     </div>
+</div>
+
+
+<?php
+$css = <<<CSS
+#heat-fill {
+
+    display: block;
+    position: relative;
+    height: 7px;
+    width: 200px;
+    background: -webkit-linear-gradient(to right, #dfe7eb 20%, #4D7686 80%); /* Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
+    background: -moz-linear-gradient(to right, #dfe7eb 20%, #4D7686 80%); /* Firefox 3.6-15 */
+    background: -o-linear-gradient(to right, #dfe7eb 20%, #4D7686 80%); /* Opera 11.1-12 */
+    background: linear-gradient(to right, #dfe7eb 20%, #4D7686 80%); /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
+}
+.fill-a, .fill-b {
+
+    width: 20px;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    background: #fff;
+    padding-right: 4px;
+    position: absolute;
+    left: 0;
+    margin-top: -7px;
+    font-weight: 700;
+
+}
+.fill-b {
+    text-align: left;
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: 0;
+    width: 60px;
+    padding-left: 4px;
+    padding-right: 0;
+}
+
+CSS;
+
+$this->registerCss($css);
+?>
