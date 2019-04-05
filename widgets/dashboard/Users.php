@@ -45,10 +45,7 @@ class Users extends DashboardWidget
                 $option['url'] = [$this->indexAction, $formName => $option['filterWhere']];
             }
 
-            return $this->render('users', [
-                'height' => $this->height,
-                'width' => $this->width,
-                'position' => $this->position,
+            return $this->render('users', [               
                 'users' => $this->options,
                 'recent' => $recent,
             ]);

@@ -46,9 +46,6 @@ class UsersVisitMap extends DashboardWidget
                 ];
             }
             return $this->render('users-visit-map', [
-                'height' => $this->height,
-                'width' => $this->width,
-                'position' => $this->position,
                 'values' => array_count_values($values),
                 'markers' => $markers,
             ]);

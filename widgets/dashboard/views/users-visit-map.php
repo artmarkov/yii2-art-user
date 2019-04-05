@@ -18,78 +18,76 @@ use cjtterabytesoft\widget\jvectormap\JvectorMap;
  * @since: 0.0.1-dev
  * */
 ?>
-<div class="pull-<?= $position ?> col-xs-12 col-md-<?= $width ?> widget-height-<?= $height ?>">
-    <div class = "panel panel-default dw-widget">
-        <div class = "panel-heading">
-            <?= Yii::t('art/users', 'Site Visits') ?>
-        </div>
-        <div class = "panel-body">
+<div class = "panel panel-default dw-widget">
+    <div class = "panel-heading">
+        <?= Yii::t('art/users', 'Site Visits') ?>
+    </div>
+    <div class = "panel-body">
 
-            <?= JvectorMap::widget([
-                'id' => 'vmap',
-                'style' => [
-                    'border' => '1px solid rgba(228, 225, 225, 0.92)',
-                    'height' => '300px',
-                    'position' => 'relative',
-                    'overflow' => 'hidden',
+        <?=
+        JvectorMap::widget([
+            'id' => 'vmap',
+            'style' => [
+                'border' => '1px solid rgba(228, 225, 225, 0.92)',
+                'height' => '300px',
+                'position' => 'relative',
+                'overflow' => 'hidden',
+            ],
+            /** [map config] * */
+            'map' => 'world_mill',
+            'backgroundColor' => '#fefefe',
+            'markers' => $markers,
+            'markersSelectable' => true,
+            'markersSelectableOne' => true,
+            'markerStyle' => [
+                'initial' => [
+                    'r' => 4,
+                    'fill' => '#fff',
+                    'fill-opacity' => 1,
+                    'stroke' => '#000',
+                    'stroke-width' => 2,
+                    'stroke-opacity' => 0.4,
                 ],
-                /** [map config] * */
-                'map' => 'world_mill',
-                'backgroundColor' => '#fefefe',
-                'markers' => $markers,
-                'markersSelectable' => true,
-                'markersSelectableOne' => true,
-                'markerStyle' => [
-                    'initial' => [
-                        'r' => 4,
-                        'fill' => '#fff',
-                        'fill-opacity' => 1,
-                        'stroke' => '#000',
-                        'stroke-width' => 2,
-                        'stroke-opacity' => 0.4,
-                    ],
+            ],
+            'panOnDrag' => true,
+            'regionLabelStyle' => [
+                'initial' => [
+                    'font-family' => 'Verdana',
+                    'font-size' => '12',
+                    'font-weight' => 'bold',
+                    'cursor' => 'default',
+                    'fill' => 'black',
                 ],
-                'panOnDrag' => true,
-                'regionLabelStyle' => [
-                    'initial' => [
-                        'font-family' => 'Verdana',
-                        'font-size' => '12',
-                        'font-weight' => 'bold',
-                        'cursor' => 'default',
-                        'fill' => 'black',
-                    ],
-                    'hover' => [
-                        'cursor' => 'pointer',
-                    ],
+                'hover' => [
+                    'cursor' => 'pointer',
                 ],
-                'regionsSelectable' => true,
-                'regionsSelectableOne' => true,
-                'regionStyle' => [
-                    'initial' => [
-                        'fill' => '#CCCCCC',
-                    ],
+            ],
+            'regionsSelectable' => true,
+            'regionsSelectableOne' => true,
+            'regionStyle' => [
+                'initial' => [
+                    'fill' => '#CCCCCC',
                 ],
-                'series' => [
-                    'regions' => [[
-                    'values' => $values,
-                    'scale' => ['#dfe7eb', '#4D7686'],
-                    'normalizeFunction' => 'polynomial',
-                        ]],
-                ],
-                'zoomAnimate' => true,
-                'zoomMax' => 8,
-                'zoomMin' => 1,
-                'zoomOnScroll' => true,
-            ]);
-            ?>
-        </div>
-        <div id="heat-fill">
-            <span class="fill-a">0</span>
-            <span class="fill-b"><?= max($values); ?></span>
-        </div>
+            ],
+            'series' => [
+                'regions' => [[
+                'values' => $values,
+                'scale' => ['#dfe7eb', '#4D7686'],
+                'normalizeFunction' => 'polynomial',
+                    ]],
+            ],
+            'zoomAnimate' => true,
+            'zoomMax' => 8,
+            'zoomMin' => 1,
+            'zoomOnScroll' => true,
+        ]);
+        ?>
+    </div>
+    <div id="heat-fill">
+        <span class="fill-a">0</span>
+        <span class="fill-b"><?= max($values); ?></span>
     </div>
 </div>
-
 
 <?php
 $css = <<<CSS

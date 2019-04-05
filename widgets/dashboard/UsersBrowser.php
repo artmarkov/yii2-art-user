@@ -14,33 +14,71 @@ class UsersBrowser extends DashboardWidget
      * Post index action
      */
     public $indexAction = 'user/default/index';
+    /**
+     * 
+     * @param type $arr
+     * @return type array
+     */
+    protected function mysort($arr)
+    {
+        $length = count($arr);
 
-   
+        while ($length != 0)
+        {
+            foreach ($arr as $k => $v)
+            {
+                if ($v == max($arr))
+                {
+                    $arr2[$k] = $v;
+                    unset($arr[$k]);
+                    $length--;
+                }
+            }
+        }
+        return $arr2;
+    }
+
+    /**
+     * 
+     * @param type $r
+     * @param type $g
+     * @param type $b
+     * @param type $a
+     * @return type string
+     */
+    protected function getColor($r, $g, $b, $a)
+    {
+        return 'rgba('.$r.','.$g.','.$b.','.$a.')';
+    }
+
     public function run()
     {
-       if (User::hasPermission('viewUsers')) {
-           
+        if (User::hasPermission('viewUsers'))
+        {
+
             $visits = UserVisitLog::find()->all();
-           
-            foreach ($visits as $visit) {
+
+            foreach ($visits as $visit)
+            {
                 if (!empty($visit->browser))
                 {
                     $values[] = $visit->browser;
-                }                
+                }
             }
-                 $total_count = count($values);
-                 
-           foreach (array_count_values($values) as $label => $count) {
+            $values = array_count_values($values);
+            $total_count = count($values);
+
+            $i = 0;
+
+            foreach ($this->mysort($values) as $label => $count)
+            {
                 $labels[] = $label;
                 $data[] = $count;
-                $transparent = round($count/$total_count, 2);
-                $backgroundColor[] = 'rgba(77, 117, 133, ' . $transparent . ')';
+                $backgroundColor[] = $this->getColor(77, 117, 133, round(($total_count - $i) / $total_count, 2));
+                $i++;
             }
-//                 echo '<pre>' . print_r($backgroundColor, true) . '</pre>';
+
             return $this->render('users-browser', [
-                        'height' => $this->height,
-                        'width' => $this->width,
-                        'position' => $this->position,
                         'backgroundColor' => $backgroundColor,
                         'data' => $data,
                         'labels' => $labels,
