@@ -121,6 +121,7 @@ class PermissionController extends BaseController
         $model->scenario = 'webInput';
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('crudMessage', Yii::t('art', 'Your item has been created.'));
             return $this->redirect(['view', 'id' => $model->name]);
         }
 
@@ -141,6 +142,7 @@ class PermissionController extends BaseController
         $model->scenario = 'webInput';
 
         if ($model->load(Yii::$app->request->post()) AND $model->save()) {
+            Yii::$app->session->setFlash('crudMessage', Yii::t('art', 'Your item has been updated.'));
             return $this->redirect(['view', 'id' => $model->name]);
         }
 
