@@ -58,6 +58,10 @@ class UsersBrowser extends DashboardWidget
 
             $visits = UserVisitLog::find()->all();
 
+            if(empty($visits)) {
+                return;
+            }
+            
             foreach ($visits as $visit)
             {
                 if (!empty($visit->browser))
@@ -67,7 +71,7 @@ class UsersBrowser extends DashboardWidget
             }
             $values = array_count_values($values);
             $total_count = count($values);
-
+            
             $i = 0;
 
             foreach ($this->mysort($values) as $label => $count)

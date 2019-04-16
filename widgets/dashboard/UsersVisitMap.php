@@ -39,6 +39,11 @@ class UsersVisitMap extends DashboardWidget
                     $markers_name[$sity_id] = empty($visit->geoLocation['city']['name_en']) ? $visit->geoLocation['country']['name_en'] : $visit->geoLocation['city']['name_en'];
                 }
             }
+            
+            if(empty($markers_id)) {
+                return;
+            }
+            
             foreach (array_count_values($markers_id) as $sity_id => $count) {
                 $markers[] = [
                     'latLng' => $markers_coord[$sity_id],
