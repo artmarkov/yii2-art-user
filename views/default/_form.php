@@ -69,7 +69,7 @@ use yii\widgets\MaskedInput;
                         </div>
                     </div>
 
-                    <?= $form->field($model, 'info')->textarea(['maxlength' => 255]) ?>
+                    <?= $form->field($model, 'info')->textarea(['maxlength' => 255, 'rows' => 6]) ?>
              
                 </div>
             </div>

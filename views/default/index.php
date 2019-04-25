@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 );
                             }
                         ],
-                        'options' => ['style' => 'width:300px']
+                        'options' => ['style' => 'width:350px']
                     ],
                     [
                         'attribute' => 'email',

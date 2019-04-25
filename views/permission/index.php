@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute' => 'name',
-                        'options' => ['style' => 'width:150px'],
+                        'options' => ['style' => 'width:200px'],
                     ],
                     [
                         'attribute' => 'group_code',
@@ -89,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => function (Permission $model) {
                             return $model->group_code ? $model->group->name : '';
                         },
-                        'options' => ['style' => 'width:150px'],
+                        'options' => ['style' => 'width:200px'],
                     ],
                 ],
             ]);
