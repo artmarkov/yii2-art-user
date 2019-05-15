@@ -20,7 +20,7 @@ use cjtterabytesoft\widget\jvectormap\JvectorMap;
 ?>
 <div class = "panel panel-default dw-widget">
     <div class = "panel-heading">
-        <?= Yii::t('art/users', 'Site Visits') ?>
+        <?= Yii::t('art/user', 'Site Visits') ?>
     </div>
     <div class = "panel-body">
 
