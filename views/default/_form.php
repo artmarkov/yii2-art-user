@@ -23,7 +23,7 @@ use yii\widgets\MaskedInput;
     ?>
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
 
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -75,8 +75,58 @@ use yii\widgets\MaskedInput;
             </div>
         </div>
 
-        <div class="col-md-3">
-
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="record-info">
+                        <div class="form-group clearfix">
+                                <label class="control-label" style="float: left; padding-right: 5px;">
+                                    <?=  $model->attributeLabels()['id'] ?>: </label>
+                                <span><?=  $model->id ?></span>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="control-label" style="float: left; padding-right: 5px;">
+                                <?= $model->attributeLabels()['registration_ip'] ?> :
+                            </label>
+                            <span><?= $model->registration_ip ?></span>
+                        </div>
+                        
+                        <?php if (!$model->isNewRecord): ?>
+                        
+                        <div class="form-group clearfix">
+                            <label class="control-label" style="float: left; padding-right: 5px;">
+                                <?= $model->attributeLabels()['created_at'] ?> :
+                            </label>
+                            <span><?= "{$model->createdDate} {$model->createdTime}" ?></span>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="control-label" style="float: left; padding-right: 5px;">
+                                <?= $model->attributeLabels()['updated_at'] ?> :
+                            </label>
+                            <span><?= $model->updatedDatetime ?></span>
+                        </div>
+                        
+                        <?php endif; ?>
+                        
+                        <div class="form-group ">
+                            <?php if ($model->isNewRecord): ?>
+                                <?= Html::submitButton(Yii::t('art', 'Create'), ['class' => 'btn btn-primary']) ?>
+                                <?= Html::a(Yii::t('art', 'Cancel'), ['/user/default/index'], ['class' => 'btn btn-default']) ?>
+                            <?php else: ?>
+                                <?= Html::submitButton(Yii::t('art', 'Save'), ['class' => 'btn btn-primary']) ?>
+                                <?= Html::a(Yii::t('art', 'Delete'), ['/user/default/delete', 'id' => $model->id], [
+                                    'class' => 'btn btn-default',
+                                    'data' => [
+                                        'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                                        'method' => 'post',
+                                    ],
+                                ])
+                                ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="record-info">
@@ -94,48 +144,6 @@ use yii\widgets\MaskedInput;
                             <?= $form->field($model, 'bind_to_ip')->textInput(['maxlength' => 255])->hint(Yii::t('art', 'For example') . ' : 123.34.56.78, 234.123.89.78') ?>
                         <?php endif; ?>
                         
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="record-info">
-                        <div class="form-group clearfix">
-                            <label class="control-label" style="float: left; padding-right: 5px;">
-                                <?= $model->attributeLabels()['registration_ip'] ?> :
-                            </label>
-                            <span><?= $model->registration_ip ?></span>
-                        </div>
-                        <div class="form-group clearfix">
-                            <label class="control-label" style="float: left; padding-right: 5px;">
-                                <?= $model->attributeLabels()['created_at'] ?> :
-                            </label>
-                            <span><?= "{$model->createdDate} {$model->createdTime}" ?></span>
-                        </div>
-                        <div class="form-group clearfix">
-                            <label class="control-label" style="float: left; padding-right: 5px;">
-                                <?= $model->attributeLabels()['updated_at'] ?> :
-                            </label>
-                            <span><?= $model->updatedDatetime ?></span>
-                        </div>
-
-                        <div class="form-group ">
-                            <?php if ($model->isNewRecord): ?>
-                                <?= Html::submitButton(Yii::t('art', 'Create'), ['class' => 'btn btn-primary']) ?>
-                                <?= Html::a(Yii::t('art', 'Cancel'), ['/user/default/index'], ['class' => 'btn btn-default']) ?>
-                            <?php else: ?>
-                                <?= Html::submitButton(Yii::t('art', 'Save'), ['class' => 'btn btn-primary']) ?>
-                                <?= Html::a(Yii::t('art', 'Delete'), ['/user/default/delete', 'id' => $model->id], [
-                                    'class' => 'btn btn-default',
-                                    'data' => [
-                                        'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                                        'method' => 'post',
-                                    ],
-                                ])
-                                ?>
-                            <?php endif; ?>
-                        </div>
                     </div>
                 </div>
             </div>

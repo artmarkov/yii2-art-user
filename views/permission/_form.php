@@ -22,23 +22,17 @@ use artsoft\widgets\ActiveForm;
     ?>
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <?= $form->field($model, 'description')->textInput(['maxlength' => 255, 'autofocus' => $model->isNewRecord ? true : false]) ?>
+                    
                     <?= $form->field($model, 'name')->textInput(['maxlength' => 64]) ?>
+                    
+                    <?= $form->field($model, 'group_code')->dropDownList(ArrayHelper::map(AuthItemGroup::find()->asArray()->all(), 'code', 'name'), ['prompt' => '']) ?>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="record-info">
-
-                        <?= $form->field($model, 'group_code')
-                            ->dropDownList(ArrayHelper::map(AuthItemGroup::find()->asArray()->all(), 'code', 'name'), ['prompt' => '']) ?>
-
                         <div class="form-group">
                             <?php if ($model->isNewRecord): ?>
                                 <?= Html::submitButton(Yii::t('art', 'Create'), ['class' => 'btn btn-primary']) ?>

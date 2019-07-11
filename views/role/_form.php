@@ -19,17 +19,12 @@ use artsoft\widgets\ActiveForm;
     ?>
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <?= $form->field($model, 'description')->textInput(['maxlength' => 255, 'autofocus' => $model->isNewRecord ? true : false]) ?>
                     <?= $form->field($model, 'name')->textInput(['maxlength' => 64]) ?>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="record-info">
                         <div class="form-group">
