@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="panel panel-default">
         <div class="panel-body">
             <?= Html::a(Yii::t('art', 'Delete'), ['/user/visit-log/delete', 'id' => $model->id], [
-                'class' => 'btn btn-sm btn-default',
+                'class' => 'btn btn-sm btn-danger',
                 'data' => [
                     'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                     'method' => 'post',

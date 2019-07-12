@@ -31,7 +31,7 @@ use artsoft\widgets\ActiveForm;
                     
                     <?= $form->field($model, 'group_code')->dropDownList(ArrayHelper::map(AuthItemGroup::find()->asArray()->all(), 'code', 'name'), ['prompt' => '']) ?>
                 </div>
-                <div class="panel-body">
+                <div class="panel-footer">
                     <div class="record-info">
                         <div class="form-group">
                             <?php if ($model->isNewRecord): ?>
@@ -40,7 +40,7 @@ use artsoft\widgets\ActiveForm;
                             <?php else: ?>
                                 <?= Html::submitButton(Yii::t('art', 'Save'), ['class' => 'btn btn-primary']) ?>
                                 <?= Html::a(Yii::t('art', 'Delete'), ['delete', 'id' => $model->name], [
-                                    'class' => 'btn btn-default',
+                                    'class' => 'btn btn-danger',
                                     'data' => [
                                         'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                                         'method' => 'post',
