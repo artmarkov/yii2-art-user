@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-sm-12">
-            <h3 class="lte-hide-title page-title"><?= Html::encode($this->title) ?></h3>
+            <h3 class="page-title"><?= Html::encode($this->title) ?></h3>
             <?= Html::a(Yii::t('art', 'Edit'), ['update', 'id' => $item->name], ['class' => 'btn btn-sm btn-primary']) ?>
             <?= Html::a(Yii::t('art', 'Create'), ['create'], ['class' => 'btn btn-sm btn-success']) ?>
         </div>
