@@ -72,7 +72,7 @@ class PermissionController extends BaseController
         Permission::addChildren($item->name, $toAdd);
         Permission::removeChildren($item->name, $toRemove);
 
-        Yii::$app->session->setFlash('crudMessage', Yii::t('art', 'Saved'));
+        Yii::$app->session->setFlash('success', Yii::t('art', 'Saved'));
 
         return $this->redirect(['view', 'id' => $id]);
     }
@@ -105,7 +105,7 @@ class PermissionController extends BaseController
 
         AuthHelper::invalidatePermissions();
 
-        Yii::$app->session->setFlash('crudMessage', Yii::t('art', 'Saved'));
+        Yii::$app->session->setFlash('success', Yii::t('art', 'Saved'));
 
         return $this->redirect(['view', 'id' => $id]);
     }
@@ -121,7 +121,7 @@ class PermissionController extends BaseController
         $model->scenario = 'webInput';
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('crudMessage', Yii::t('art', 'Your item has been created.'));
+            Yii::$app->session->setFlash('success', Yii::t('art', 'Your item has been created.'));
             return $this->redirect(['view', 'id' => $model->name]);
         }
 
@@ -142,7 +142,7 @@ class PermissionController extends BaseController
         $model->scenario = 'webInput';
 
         if ($model->load(Yii::$app->request->post()) AND $model->save()) {
-            Yii::$app->session->setFlash('crudMessage', Yii::t('art', 'Your item has been updated.'));
+            Yii::$app->session->setFlash('success', Yii::t('art', 'Your item has been updated.'));
             return $this->redirect(['view', 'id' => $model->name]);
         }
 
