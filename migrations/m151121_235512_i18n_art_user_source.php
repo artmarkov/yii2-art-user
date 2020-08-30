@@ -55,9 +55,15 @@ class m151121_235512_i18n_art_user_source extends SourceMessagesMigration
             'Current' => 1,
             'Active' => 1,
             'Expire' => 1,
-            'Last Attempt' => 1,
+            'Run At' => 1,
             'Destroy sessions' => 1,
             'Are you sure you want to destroy this session?' => 1,
+            'Requests' => 1,
+            'Request time' => 1,
+            'POST' => 1,
+            'Time' => 1,
+            'Mem' => 1,
+            'HTTP statu' => 1,
         ];
     }
 }

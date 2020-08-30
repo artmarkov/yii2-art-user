@@ -17,6 +17,7 @@ use artsoft\models\Session;
 $this->title = Yii::t('art/user', 'Sessions');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('art/user', 'Users'), 'url' => ['/user/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
 <div class="user-session-index">
@@ -83,6 +84,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                     ],
                     [
+                        'attribute' => 'ip',
+                        'value' => function ($model) {
+                            return $model->getIP();
+                        },
+                    ],
+                    [
                         'attribute' => 'status',
                         'value' => function ($model) {
                             return $model->getStatusLabel($model->getStatus());
@@ -90,11 +97,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'raw',
                     ],
                     [
-                        'attribute' => 'last_attempt',
-                        'value' => function ($model) {
-                            return $model->getLastAttempt() ? Yii::$app->formatter->asDateTime($model->getLastAttempt()) . '<br />(' . \yii\timeago\TimeAgo::widget(
+                        'attribute' => 'run_at',
+                        'value' => function (Session $model) {
+                            return $model->getRunAt() ? Yii::$app->formatter->asDateTime($model->getRunAt()) . '<br />(' . \yii\timeago\TimeAgo::widget(
                                     [
-                                        'timestamp' => $model->getLastAttempt(),
+                                        'timestamp' => $model->getRunAt(),
                                         'language' => Yii::$app->art->getDisplayLanguageShortcode(Yii::$app->language)
                                     ]) . ')' : '';
                         },
@@ -105,6 +112,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => function (Session $model) {
                             return Yii::$app->formatter->asDateTime($model->expire);
                         },
+                        'format' => 'raw',
                     ],
                 ],
             ]);

@@ -135,6 +135,26 @@ class m150825_205531_add_user_permissions extends PermissionsMigration
                         '/admin/user/visit-log/grid-page-size',
                     ],
                 ],
+                'viewSession' => [
+                    'title' => 'View Session',
+                    'roles' => [self::ROLE_ADMIN],
+                    'childs' => ['viewUsers'],
+                    'links' => [
+                        '/admin/user/session/index',
+                        '/admin/user/session/grid-sort',
+                        '/admin/user/session/grid-page-size',
+                    ],
+                ],
+                'viewRequest' => [
+                    'title' => 'View Request',
+                    'roles' => [self::ROLE_ADMIN],
+                    'childs' => ['viewUsers'],
+                    'links' => [
+                        '/admin/user/request/index',
+                        '/admin/user/request/grid-sort',
+                        '/admin/user/request/grid-page-size',
+                    ],
+                ],
                 'bindUserToIp' => [
                     'title' => 'Bind User To IP',
                     'roles' => [self::ROLE_ADMIN],

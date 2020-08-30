@@ -7,15 +7,15 @@ use artsoft\models\Session;
 use yii\data\ArrayDataProvider;
 
 /**
- * SessionController implements the CRUD actions for Session model.
+ * RequestsController implements the CRUD actions for Requests model.
  */
-class SessionController extends BaseController
+class RequestController extends BaseController
 {
     /**
      *
      * @inheritdoc
      */
-    public $modelClass = 'artsoft\models\Session';
-    public $modelSearchClass = 'artsoft\user\models\search\SessionSearch';
+    public $modelClass = 'artsoft\models\Request';
+    public $modelSearchClass = 'artsoft\user\models\search\RequestSearch';
     public $disabledActions = ['view','create','update'];
 }
