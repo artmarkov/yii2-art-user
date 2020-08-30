@@ -18,4 +18,5 @@ class RequestController extends BaseController
     public $modelClass = 'artsoft\models\Request';
     public $modelSearchClass = 'artsoft\user\models\search\RequestSearch';
     public $disabledActions = ['view','create','update'];
+    public $tabMenuId = 'log-tabmenu';
 }

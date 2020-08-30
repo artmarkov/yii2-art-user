@@ -20,16 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="user-requests-index">
-
-    <div class="row">
-        <div class="col-sm-12">
-            <h3 class="page-title"><?= Html::encode($this->title) ?></h3>
-        </div>
-    </div>
-
     <div class="panel panel-default">
         <div class="panel-body">
-
             <div class="row">
                 <div class="col-sm-12">
                     <?= GridPageSize::widget(['pjaxId' => 'user-requests-grid-pjax']) ?>
@@ -68,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'user_id',
                         'label' => Yii::t('art', 'Login'),
                         'format' => 'raw',
-                        'value' => function($model) {
+                        'value' => function ($model) {
                             return \artsoft\models\User::findOne($model->user_id)->username;
                         }
                     ],

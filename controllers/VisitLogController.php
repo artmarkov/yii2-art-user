@@ -28,4 +28,6 @@ class VisitLogController extends BaseController
   
     public $disabledActions = ['update'];
 
+    public $tabMenuId = 'log-tabmenu';
+
 }

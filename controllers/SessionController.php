@@ -18,4 +18,5 @@ class SessionController extends BaseController
     public $modelClass = 'artsoft\models\Session';
     public $modelSearchClass = 'artsoft\user\models\search\SessionSearch';
     public $disabledActions = ['view','create','update'];
+    public $tabMenuId = 'log-tabmenu';
 }
