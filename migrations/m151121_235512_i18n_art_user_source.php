@@ -50,6 +50,14 @@ class m151121_235512_i18n_art_user_source extends SourceMessagesMigration
             "You can't update own permissions!" => 1,
             '{permission} Permission Settings' => 1,
             '{permission} Role Settings' => 1,
+            'Sessions' => 1,
+            'Waiting' => 1,
+            'Current' => 1,
+            'Active' => 1,
+            'Expire' => 1,
+            'Last Attempt' => 1,
+            'Destroy sessions' => 1,
+            'Are you sure you want to destroy this session?' => 1,
         ];
     }
 }
