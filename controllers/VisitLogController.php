@@ -28,6 +28,13 @@ class VisitLogController extends BaseController
   
     public $disabledActions = ['update'];
 
-    public $tabMenuId = 'log-tabmenu';
+    protected function getListMenu()
+    {
+        return [
+            ['url' => ['/user/visit-log/index'], 'label' => 'Visit Log', 'visible' => 1],
+            ['url' => ['/user/session/index'], 'label' => 'Session'],
+            ['url' => ['/user/request/index'], 'label' => 'Request'],
+        ];
+    }
 
 }
