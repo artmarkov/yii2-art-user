@@ -19,9 +19,13 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('art/user', 'Users'), 'url' 
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-
+<div class="row">
+    <div class="col-sm-12">
+        <h3 class="page-title"><?= Html::encode($this->title) ?></h3>
+    </div>
+</div>
 <div class="user-session-index">
-    <div class="panel">
+    <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-12">
