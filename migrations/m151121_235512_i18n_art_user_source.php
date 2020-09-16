@@ -63,7 +63,7 @@ class m151121_235512_i18n_art_user_source extends SourceMessagesMigration
             'POST' => 1,
             'Time' => 1,
             'Mem' => 1,
-            'HTTP statu' => 1,
+            'HTTP status' => 1,
         ];
     }
 }
